@@ -17,6 +17,53 @@ public class Radio {
         currentNumberRadioStation = newCurrentNumberRadioStation;
     }
 
+    public void setToMaxCurrentNumberRadioStation() {
+        currentNumberRadioStation = 9;
+    }
+
+    public void setToMinCurrentNumberRadioStation() {
+        currentNumberRadioStation = 0;
+    }
+
+    public int nextStation;
+
+    public int getNextStation() {
+
+        return nextStation;
+    }
+
+
+    public void setNextStation(int newNextStation) {
+        if (newNextStation < 0) {
+            return;
+        }
+        if (newNextStation > 9) {
+            return;
+        }
+        if (newNextStation < 9) {
+            nextStation = newNextStation + 1;
+        }
+    }
+
+
+    public int prevStation;
+
+    public int getPrevStation() {
+        return prevStation;
+    }
+
+    public void setPrevStation(int newPrevStation) {
+        if (newPrevStation < 0) {
+            return;
+        }
+        if (newPrevStation == 0) { //что-то не так, проверить!
+            newPrevStation = 9;
+        }
+        if (newPrevStation < 9) {
+            prevStation = newPrevStation - 1;
+        }
+    }
+
     public int currentVolume;
 
     public int getCurrentVolume() {
@@ -42,33 +89,15 @@ public class Radio {
     }
 
     public void increaseVolume() {
-        if (currentVolume < 100) {
+        if (currentVolume > 0) {
             currentVolume = currentVolume + 1;
         }
     }
 
     public void decreaseVolume() {
-        if (currentVolume < 100) {
+        if (currentVolume <= 100) {
             currentVolume = currentVolume - 1;
         }
-        if (currentVolume < 0) {
-            currentVolume = 0;
-        }
-    }
-
-    public int nextStation;
-
-    public int getNextStation() {
-        return nextStation;
-    }
-    public void setNextStation(int newNextStation) {
-        if (newNextStation < 0) {
-            return;
-        }
-        if (newNextStation > 9) {
-            return;
-        }
-        nextStation = newNextStation + 1;
     }
 }
 
